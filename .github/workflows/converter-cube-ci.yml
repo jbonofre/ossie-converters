@@ -23,12 +23,14 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'converters/cube/**'
+      - 'cube/**'
+      - 'ossie'
       - '.github/workflows/converter-cube-ci.yml'
   pull_request:
     branches: [ "main" ]
     paths:
-      - 'converters/cube/**'
+      - 'cube/**'
+      - 'ossie'
       - '.github/workflows/converter-cube-ci.yml'
 
 permissions:
@@ -45,6 +47,8 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: true
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -57,13 +61,13 @@ jobs:
           version: "0.12.19"
 
       - name: Sync dependencies
-        working-directory: converters/cube
+        working-directory: cube
         run: |
           uv sync
 
       - name: Unit Tests
-        working-directory: converters/cube
+        working-directory: cube
         # The Cube-compiles-it gate needs a built Cube checkout (OSSIE_CUBE_REPO) and
-        # skips without one, so CI runs everything else. See converters/cube/README.md.
+        # skips without one, so CI runs everything else. See cube/README.md.
         run: |
           uv run pytest

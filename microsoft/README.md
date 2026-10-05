@@ -34,7 +34,7 @@ malformed or excluded from the vendor-neutral model.
 ## Installation
 
 ```bash
-cd converters/microsoft
+cd microsoft
 uv sync
 ```
 
@@ -220,7 +220,7 @@ dialect before exporting.
 ## Losslessness
 
 Nothing is discarded silently. The converter follows the two rules in
-[`converters/README.md`](../README.md):
+[the repository `README.md`](../README.md):
 
 1. **Preserve.** Every TMSL property the Apache Ossie mapping does not consume —
    annotations, partitions, hierarchies, roles, perspectives, cultures, query groups,
@@ -386,7 +386,7 @@ warnings and supply a DAX expression before using the exported model for analysi
 ## Testing
 
 ```bash
-cd converters/microsoft
+cd microsoft
 uv run ruff check .
 uv run pytest --cov
 ```

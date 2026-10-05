@@ -463,12 +463,12 @@ uv run tools/interop_matrix.py path/to/cube/model    # any Cube model directory
 uv run tools/interop_matrix.py --spokes omni --keep  # one spoke, keep its output
 ```
 
-It converts a Cube model to Ossie, checks that intermediate against the repo's own
+It converts a Cube model to Ossie, checks that intermediate against apache/ossie's
 `validation/validate.py`, then hands it to every other converter and reports what
 each made of it:
 
 ```
-model:  converters/cube/tests/fixtures/tpcds_cube
+model:  cube/tests/fixtures/tpcds_cube
 Ossie:  539 lines, 7 CUBE stash entries
 issues: 5x CUBE_LEVEL_AI_CONTEXT_INERT
 spec:   valid (validation/validate.py)
@@ -579,7 +579,7 @@ uv run pytest
 ```
 
 Example-based unit tests per direction, CLI behavior tests, fixture round-trip tests
-(including the [TPC-DS model](../../examples/tpcds_semantic_model.yaml) the converter
+(including the [TPC-DS model](https://github.com/apache/ossie/blob/main/examples/tpcds_semantic_model.yaml) the converter
 guide asks for as a baseline), a **feature matrix** of one fixture per Cube data-model
 feature, core-spec validation of every emitted Ossie document, and Hypothesis
 property-based round-trip tests **from both ends** -- which fall back to a seeded

@@ -46,8 +46,8 @@ from ossie_nvidia_auto_ontology.native_converter import (
 
 OSSIE_VERSION = "0.2.0.dev0"
 FIXTURES = Path(__file__).parent / "fixtures"
-VALIDATOR = Path(__file__).resolve().parents[3] / "validation" / "validate.py"
-SCHEMA = Path(__file__).resolve().parents[3] / "core-spec" / "ossie-schema.json"
+VALIDATOR = Path(__file__).resolve().parents[2] / "ossie" / "validation" / "validate.py"
+SCHEMA = Path(__file__).resolve().parents[2] / "ossie" / "core-spec" / "ossie-schema.json"
 
 
 def _ossie_yaml() -> str:

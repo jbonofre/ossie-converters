@@ -1037,8 +1037,8 @@ def test_ossie_roundtrip_sm(tmp_path, model, expected_sm):
 
 def test_ossie_roundtrip_tpcds_example(tmp_path):
     tpcds_path = (
-        Path(__file__).resolve().parent.parent.parent.parent
-        / "examples" / "tpcds_semantic_model.yaml"
+        Path(__file__).resolve().parent.parent.parent
+        / "ossie" / "examples" / "tpcds_semantic_model.yaml"
     )
     if not tpcds_path.exists():
         pytest.skip("TPC-DS example not found")

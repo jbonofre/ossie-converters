@@ -30,7 +30,8 @@ from ossie_microsoft._common import VENDOR, make_expression, read_stash, write_s
 from ossie_microsoft.semantic_model_to_ossie import build_ossie_document
 
 FIXTURES = Path(__file__).parent / "fixtures"
-REPO_ROOT = Path(__file__).resolve().parents[3]
+# The apache/ossie checkout (the `ossie` git submodule): core-spec/, examples/, ...
+REPO_ROOT = Path(__file__).resolve().parents[2] / "ossie"
 
 
 def _dataset(model, name):

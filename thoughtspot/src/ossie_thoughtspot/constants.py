@@ -51,7 +51,7 @@ SPEC_SERIES = "0.2"
 #: compatibility), ossie-schema.json pins `version` to this exact string as a
 #: `const` (`ossie-schema.json:8-12`), so a document that emits anything else
 #: fails schema validation outright. Bump in lockstep with core-spec/'s own
-#: `version` if it ever moves -- the same discipline converters/databricks'
+#: `version` if it ever moves -- the same discipline databricks'
 #: `OSSIE_VERSION` constant documents.
 DOCUMENT_VERSION = "0.2.0.dev0"
 

@@ -684,7 +684,7 @@ class TestStashProtocol:
 class TestSchemaValidation:
     def test_the_output_validates_against_the_upstream_schema(self):
         jsonschema = pytest.importorskip("jsonschema")
-        schema_path = Path(__file__).resolve().parents[3] / "core-spec" / "ossie-schema.json"
+        schema_path = Path(__file__).resolve().parents[2] / "ossie" / "core-spec" / "ossie-schema.json"
         with open(schema_path) as fh:
             schema = json.load(fh)
 

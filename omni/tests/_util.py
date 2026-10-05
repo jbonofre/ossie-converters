@@ -24,7 +24,8 @@ import pathlib
 from ossie_omni._common import load_yaml  # src is on sys.path via conftest.py
 
 FIXTURES = pathlib.Path(__file__).resolve().parent / "fixtures"
-REPO_ROOT = pathlib.Path(__file__).resolve().parents[3]
+# The apache/ossie checkout (the `ossie` git submodule): core-spec/, examples/, ...
+REPO_ROOT = pathlib.Path(__file__).resolve().parents[2] / "ossie"
 
 
 def load_fixture(name):

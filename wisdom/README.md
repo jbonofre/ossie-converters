@@ -26,16 +26,16 @@ YAML document.
 ## Usage
 
 ```bash
-pip install -e ../../python -e .
+pip install -e ../ossie/python -e .
 ossie-wisdom wisdom-to-ossie -i domain-export.json -o semantic_model.yaml
 ossie-wisdom ossie-to-wisdom -i semantic_model.yaml -o domain-export.json
 ```
 
 Conversion warnings (information loss) are printed to stderr; the output YAML validates
-against the [Ossie JSON Schema](../../core-spec/ossie-schema.json):
+against the [Ossie JSON Schema](https://github.com/apache/ossie/blob/main/core-spec/ossie-schema.json):
 
 ```bash
-python ../../validation/validate.py semantic_model.yaml --schema ../../core-spec/ossie-schema.json
+python ../ossie/validation/validate.py semantic_model.yaml --schema ../ossie/core-spec/ossie-schema.json
 ```
 
 ## Field mapping
@@ -116,6 +116,6 @@ are stable:
 ## Development
 
 ```bash
-pip install -e ../../python -e . pytest
+pip install -e ../ossie/python -e . pytest
 pytest tests/
 ```

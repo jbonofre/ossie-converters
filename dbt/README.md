@@ -141,7 +141,7 @@ manifest_json = result.output.model_dump_json(by_alias=True, exclude_none=True, 
 ## Development
 
 ```bash
-cd converters/dbt
+cd dbt
 uv sync
 uv run pytest
 ```

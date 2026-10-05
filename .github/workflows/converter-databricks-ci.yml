@@ -23,16 +23,14 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'converters/databricks/**'
-      - 'core-spec/**'
-      - 'examples/**'
+      - 'databricks/**'
+      - 'ossie'
       - '.github/workflows/converter-databricks-ci.yml'
   pull_request:
     branches: [ "main" ]
     paths:
-      - 'converters/databricks/**'
-      - 'core-spec/**'
-      - 'examples/**'
+      - 'databricks/**'
+      - 'ossie'
       - '.github/workflows/converter-databricks-ci.yml'
 
 permissions:
@@ -47,11 +45,13 @@ jobs:
         python-version: ["3.11", "3.12", "3.13", "3.14"]
     defaults:
       run:
-        working-directory: converters/databricks/python
+        working-directory: databricks/python
 
     steps:
       - name: Checkout project
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: true
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -75,11 +75,13 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: converters/databricks/java
+        working-directory: databricks/java
 
     steps:
       - name: Checkout project
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: true
 
       - name: Set up JDK 21
         uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1

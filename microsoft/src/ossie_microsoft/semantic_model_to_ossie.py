@@ -26,7 +26,7 @@ perspectives, row-level security, KPIs, hierarchies, partitions, calculation gro
 cross-filter direction and so on -- are not discarded. They are preserved verbatim in a
 ``POWER_BI`` ``custom_extensions`` entry so that
 :mod:`ossie_microsoft.ossie_to_semantic_model` can rebuild them, per the round-trip
-guidance in ``converters/README.md``. Anything that genuinely cannot be represented is
+guidance in the repository ``README.md``. Anything that genuinely cannot be represented is
 reported through :func:`ossie_microsoft._common.warn`.
 """
 

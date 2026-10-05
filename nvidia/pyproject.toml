@@ -49,7 +49,7 @@ ossie-nvidia-auto-ontology = "ossie_nvidia_auto_ontology.converter:main"
 
 [project.urls]
 homepage = "https://ossie.apache.org/"
-repository = "https://github.com/apache/ossie/"
+repository = "https://github.com/apache/ossie-converters/"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ossie_nvidia_auto_ontology"]

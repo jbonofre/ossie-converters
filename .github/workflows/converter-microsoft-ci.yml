@@ -23,16 +23,14 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'converters/microsoft/**'
-      - 'core-spec/**'
-      - 'examples/**'
+      - 'microsoft/**'
+      - 'ossie'
       - '.github/workflows/converter-microsoft-ci.yml'
   pull_request:
     branches: [ "main" ]
     paths:
-      - 'converters/microsoft/**'
-      - 'core-spec/**'
-      - 'examples/**'
+      - 'microsoft/**'
+      - 'ossie'
       - '.github/workflows/converter-microsoft-ci.yml'
 
 permissions:
@@ -49,6 +47,8 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: true
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -61,31 +61,31 @@ jobs:
           version: "0.12.19"
 
       - name: Sync dependencies
-        working-directory: converters/microsoft
+        working-directory: microsoft
         run: |
           uv sync --locked
 
       - name: Lint
-        working-directory: converters/microsoft
+        working-directory: microsoft
         run: |
           uv run ruff check .
 
       - name: Unit Tests
-        working-directory: converters/microsoft
+        working-directory: microsoft
         run: |
           uv run pytest --cov --cov-report=term-missing --cov-report=xml
 
       - name: Round trip through the installed CLI
-        working-directory: converters/microsoft
+        working-directory: microsoft
         run: |
           uv run ossie-microsoft import -q -i tests/fixtures/sales_model.bim -o rt.yaml
           uv run ossie-microsoft export -q -i rt.yaml -o rt.bim
           test -s rt.yaml && test -s rt.bim
 
       - name: Output validates against the core spec
-        working-directory: converters/microsoft
+        working-directory: microsoft
         run: |
-          uv run --script ../../validation/validate.py rt.yaml
+          uv run --script ../ossie/validation/validate.py rt.yaml
 
   tom-structural-validation:
     name: Optional TOM structural validation
@@ -94,6 +94,8 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: true
 
       - name: Set up Python 3.12
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -111,12 +113,12 @@ jobs:
           version: "0.12.19"
 
       - name: Install optional TOM dependencies
-        working-directory: converters/microsoft
+        working-directory: microsoft
         run: |
           uv sync --locked --extra tom
           uv run python scripts/restore_tom.py
 
       - name: Run TOM structural validation tests
-        working-directory: converters/microsoft
+        working-directory: microsoft
         run: |
           uv run pytest tests/test_tom_integration.py -v

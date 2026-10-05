@@ -66,7 +66,7 @@ ossie-microsoft = "ossie_microsoft.cli:main"
 
 [project.urls]
 homepage = "https://ossie.apache.org/"
-repository = "https://github.com/apache/ossie/"
+repository = "https://github.com/apache/ossie-converters/"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ossie_microsoft"]

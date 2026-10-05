@@ -58,7 +58,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-# (directory under converters/, argv to convert Ossie -> spoke, output is a directory)
+# (converter directory, argv to convert Ossie -> spoke, output is a directory)
 #
 # The invocations differ per spoke because the CLIs do: some take an `export`
 # subcommand, some a named direction, snowflake takes none, gooddata ships no CLI at
@@ -87,7 +87,7 @@ _FOREIGN_RE = re.compile(r"custom_extension|vendor|foreign", re.I)
 
 def repo_root():
     for parent in Path(__file__).resolve().parents:
-        if (parent / "converters").is_dir() and (parent / "core-spec").is_dir():
+        if (parent / "cube").is_dir() and (parent / "ossie" / "core-spec").is_dir():
             return parent
     sys.exit("cannot locate the repository root from this script's path")
 
@@ -167,13 +167,13 @@ def _run_gooddata(root, ossie, dest):
         "out = gd_model_to_dict(osi_to_gooddata(model))\n"
         "open(sys.argv[2], 'w').write(json.dumps(out, indent=2, default=str))\n"
     )
-    return run(root / "converters/gooddata",
+    return run(root / "gooddata",
                ["uv", "run", "--quiet", "python", "-c", script,
                 str(ossie), str(dest)])
 
 
 def cube_to_ossie(root, model_dir, dest):
-    r = run(root / "converters/cube",
+    r = run(root / "cube",
             ["uv", "run", "--quiet", "ossie-cube", "import",
              "-i", str(model_dir), "-o", str(dest)])
     return r
@@ -185,7 +185,7 @@ def validate_ossie(root, ossie):
     A spoke rejecting the model is only interesting once the model is known good, so
     this is checked before the matrix rather than left to be inferred from it.
     """
-    return run(root, ["uv", "run", "--quiet", "validation/validate.py", str(ossie)])
+    return run(root, ["uv", "run", "--quiet", "ossie/validation/validate.py", str(ossie)])
 
 
 def main():
@@ -194,7 +194,7 @@ def main():
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument(
         "model", nargs="?",
-        default=str(root / "converters/cube/tests/fixtures/tpcds_cube"),
+        default=str(root / "cube/tests/fixtures/tpcds_cube"),
         help="Cube model directory (default: the committed tpcds fixture)")
     ap.add_argument("--spokes", help="comma-separated subset to run")
     ap.add_argument("--keep", action="store_true",
@@ -247,7 +247,7 @@ def main():
             if argv is None:
                 r = _run_gooddata(root, ossie, dest)
             else:
-                r = run(root / "converters" / name,
+                r = run(root / name,
                         ["uv", "run", "--quiet", *argv,
                          "-i", str(ossie), "-o", str(dest)])
 

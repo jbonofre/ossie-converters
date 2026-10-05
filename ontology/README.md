@@ -40,7 +40,7 @@ brew install uv
 ## Setup
 
 ```bash
-cd converters/ontology
+cd ontology
 uv sync
 ```
 

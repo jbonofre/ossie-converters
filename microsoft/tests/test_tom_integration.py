@@ -55,13 +55,13 @@ def test_sales_fixture_and_round_trip_are_tom_clean():
 
 
 def test_tpcds_export_is_tom_clean():
-    example = HERE.parents[2] / "examples" / "tpcds_semantic_model.yaml"
+    example = HERE.parents[1] / "ossie" / "examples" / "tpcds_semantic_model.yaml"
     exported = convert_ossie_to_semantic_model(example.read_text(encoding="utf-8"))
     assert validate_tmsl(exported, assembly_dir=ASSEMBLIES).is_valid
 
 
 def test_tmdl_export_is_a_single_document(monkeypatch):
-    example = HERE.parents[2] / "examples" / "tpcds_semantic_model.yaml"
+    example = HERE.parents[1] / "ossie" / "examples" / "tpcds_semantic_model.yaml"
     monkeypatch.setenv("OSSIE_MICROSOFT_TOM_ASSEMBLIES", os.fspath(ASSEMBLIES))
 
     tmdl = convert_ossie_to_semantic_model(

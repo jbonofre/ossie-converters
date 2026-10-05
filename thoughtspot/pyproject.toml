@@ -25,12 +25,12 @@ dev = [
     # Dev/test-only: validates convert()'s output against core-spec/ossie-schema.json
     # in tests/test_tml_to_ossie.py. Guarded there by pytest.importorskip("jsonschema")
     # so its absence never fails the suite -- the package's only *runtime* dependency
-    # stays PyYAML. Same dev-group placement as converters/nvidia's pyproject.toml.
+    # stays PyYAML. Same dev-group placement as nvidia's pyproject.toml.
     "jsonschema>=4.26.0",
     # Dev/test-only: drives tests/test_roundtrip_properties.py. Guarded there by
     # pytest.importorskip("hypothesis"), same discipline as jsonschema above --
     # the package's only runtime dependency stays PyYAML. Same dev-group
-    # placement as converters/databricks' own pyproject.toml.
+    # placement as databricks' own pyproject.toml.
     "hypothesis>=6.0",
 ]
 
@@ -56,7 +56,7 @@ ossie-thoughtspot = "ossie_thoughtspot.cli:main"
 
 [project.urls]
 homepage = "https://ossie.apache.org/"
-repository = "https://github.com/apache/ossie/"
+repository = "https://github.com/apache/ossie-converters/"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ossie_thoughtspot"]

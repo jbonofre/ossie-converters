@@ -58,7 +58,7 @@ ossie-cube = "ossie_cube.cli:main"
 
 [project.urls]
 homepage = "https://ossie.apache.org/"
-repository = "https://github.com/apache/ossie/"
+repository = "https://github.com/apache/ossie-converters/"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ossie_cube"]

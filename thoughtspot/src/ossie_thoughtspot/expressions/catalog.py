@@ -1713,14 +1713,17 @@ _SINGLE_CONSTRUCT_HEADING_RE = re.compile(
 
 
 def _find_spec_path() -> Path:
-    """Walk up from this file to the repository root and locate the upstream spec."""
+    """Walk up from this file to the repository root and locate the upstream spec.
+
+    The spec lives in apache/ossie, checked out here as the `ossie` git submodule.
+    """
     here = Path(__file__).resolve()
     for parent in here.parents:
-        candidate = parent / "core-spec" / "expression_language.md"
+        candidate = parent / "ossie" / "core-spec" / "expression_language.md"
         if candidate.is_file():
             return candidate
     raise FileNotFoundError(
-        f"core-spec/expression_language.md not found by walking up from {here}"
+        f"ossie/core-spec/expression_language.md not found by walking up from {here}"
     )
 
 

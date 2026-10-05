@@ -27,7 +27,8 @@ import yaml
 from ossie_microsoft import convert_semantic_model_to_ossie
 
 FIXTURES = Path(__file__).parent / "fixtures"
-REPO_ROOT = Path(__file__).resolve().parents[3]
+# The apache/ossie checkout (the `ossie` git submodule): core-spec/, examples/, ...
+REPO_ROOT = Path(__file__).resolve().parents[2] / "ossie"
 
 
 @pytest.fixture(scope="module")

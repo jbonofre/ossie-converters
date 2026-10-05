@@ -905,7 +905,7 @@ def test_dax_is_preferred_over_ossie_sql():
 
 @pytest.mark.parametrize("dialect", ["ANSI_SQL", "OSSIE_SQL_2026"])
 def test_all_tpcds_example_metrics_translate_to_dax(dialect):
-    repo_root = Path(__file__).resolve().parents[3]
+    repo_root = Path(__file__).resolve().parents[2] / "ossie"
     ossie = yaml.safe_load(
         (repo_root / "examples" / "tpcds_semantic_model.yaml").read_text(encoding="utf-8")
     )

@@ -114,7 +114,8 @@
               Copy the canonical Ossie core-spec JSON schema into this module's
               classpath under /schemas/ossie-schema.json so SchemaValidator can
               load it at runtime. Single source of truth lives in
-              ../../core-spec/ossie-schema.json; do not maintain a duplicate
+              ../ossie/core-spec/ossie-schema.json (the apache/ossie git
+              submodule); do not maintain a duplicate
               copy in this module's src/main/resources.
             -->
             <plugin>
@@ -132,7 +133,7 @@
                             <outputDirectory>${project.build.outputDirectory}/schemas</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${project.basedir}/../../core-spec</directory>
+                                    <directory>${project.basedir}/../ossie/core-spec</directory>
                                     <includes>
                                         <include>ossie-schema.json</include>
                                     </includes>

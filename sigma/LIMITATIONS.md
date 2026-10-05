@@ -19,7 +19,7 @@
 
 # Limitations and design tradeoffs
 
-What `converters/sigma` does not map onto a portable Ossie concept, and why. Every
+What the Sigma converter does not map onto a portable Ossie concept, and why. Every
 item here is reported at runtime as a `ConverterIssue`, never dropped silently.
 
 ## Presentation and governance state is preserved, not modeled

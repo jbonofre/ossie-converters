@@ -15,18 +15,6 @@
 # specific language governing permissions and limitations
 # under the License.
 
-**/__pycache__/
-**/.venv/
-
-**/.pytest_cache/
-**/.ruff_cache/
-**/.coverage
-**/coverage.xml
-**/htmlcov/
-**/dist/
-**/target/
-**/.tom/
-*.py[cod]
-
-# Apache RAT (downloaded by dev/check-license)
-dev/lib/
+[submodule "ossie"]
+	path = ossie
+	url = https://github.com/apache/ossie.git

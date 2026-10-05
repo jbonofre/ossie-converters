@@ -44,8 +44,9 @@ def _ossie_schema_path(filename: str) -> Path:
     1. A copy vendored beside this package (``schemas/<filename>``). The
        standalone PyPI wheel and the OrionBelt product API rely on this, so the
        package validates Ossie documents self-contained and offline.
-    2. Otherwise ``core-spec/<filename>`` in an enclosing Ossie monorepo
-       checkout, found by walking up from this file. This lets the in-tree
+    2. Otherwise ``ossie/core-spec/<filename>`` in an enclosing
+       ossie-converters checkout (``ossie`` is the apache/ossie git
+       submodule), found by walking up from this file. This lets the in-tree
        converter drop its vendored copy and link the single canonical schema
        rather than duplicating it.
 
@@ -56,7 +57,7 @@ def _ossie_schema_path(filename: str) -> Path:
     if vendored.exists():
         return vendored
     for parent in _SCRIPT_DIR.parents:
-        candidate = parent / "core-spec" / filename
+        candidate = parent / "ossie" / "core-spec" / filename
         if candidate.exists():
             return candidate
     return vendored

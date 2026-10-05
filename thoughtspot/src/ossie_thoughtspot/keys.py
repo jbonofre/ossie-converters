@@ -19,12 +19,12 @@
 
 TML declares no keys, so every key we emit is manufactured from the
 join graph. Upstream PR #330 checks that a relationship's to_columns covers a
-declared key, and converters/databricks turns a declared key into a
+declared key, and databricks turns a declared key into a
 `rely.at_most_one_match` join hint — so a fabricated key becomes another
 vendor's wrong numbers, not just a cosmetic error in ours.
 
 Orientation is re-checked downstream, so do not rely on ours surviving.
-`converters/databricks` (`ossie_to_metric_view.py:446-478`) swaps `from`/`to`
+`databricks` (`ossie_to_metric_view.py:446-478`) swaps `from`/`to`
 and their column arrays — via `_warn()` (`ossie_to_metric_view.py:53`), not
 silently — when the *from* side covers a key and the *to* side does not,
 carrying any `custom_extensions` payload onto the reversed relationship.

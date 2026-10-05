@@ -21,7 +21,7 @@ Exercises the conceptual conversion flow from the Ossie converters guide against
 the canonical ``examples/tpcds_semantic_model.yaml`` from the Ossie repository
 (vendored under ``fixtures/tpcds_semantic_model.yaml``, Apache-2.0):
 
-    https://github.com/apache/ossie/blob/main/converters/README.md#example-conceptual-conversion-flow
+    https://github.com/apache/ossie-converters/blob/main/README.md#example-conceptual-conversion-flow
 
 The canonical example carries ``SALESFORCE`` and ``DBT`` custom_extensions, so
 this also pins step 7 of that flow: third-party vendor extensions are preserved

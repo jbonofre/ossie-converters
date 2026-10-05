@@ -50,8 +50,8 @@ _HERE = pathlib.Path(__file__).resolve().parent
 _CONVERTER = _HERE.parent
 _TOOL = _CONVERTER / "tools" / "cube_compile.js"
 
-# converters/cube -> converters -> repo root
-_REPO_ROOT = _CONVERTER.parent.parent
+# cube -> repo root -> the apache/ossie checkout (the `ossie` git submodule)
+_REPO_ROOT = _CONVERTER.parent / "ossie"
 _VALIDATOR = _REPO_ROOT / "validation" / "validate.py"
 
 

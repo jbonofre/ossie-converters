@@ -27,7 +27,7 @@ import yaml
 from ossie_ontology.spec import DatasetField, Metric, SemanticModel
 
 # tests/ -> ontology -> converters -> <repo root>
-_EXAMPLES_DIR = Path(__file__).resolve().parents[3] / "examples"
+_EXAMPLES_DIR = Path(__file__).resolve().parents[2] / "ossie" / "examples"
 
 
 def test_dataset_field_accepts_datatype():

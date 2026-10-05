@@ -22,21 +22,20 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'converters/thoughtspot/**'
-      # core-spec/** is the convention every sibling workflow adopted in #396.
-      # It is load-bearing here rather than merely conventional: catalog.py's
-      # spec_construct_names() parses core-spec/expression_language.md directly
-      # as its upstream-spec coverage oracle, so a spec edit can fail this
-      # converter's tests without touching a single converter file.
-      - 'core-spec/**'
-      - 'examples/**'
+      - 'thoughtspot/**'
+      # `ossie` is the apache/ossie submodule (core spec, examples); every sibling
+      # workflow re-runs when its pin moves. It is load-bearing here rather than
+      # merely conventional: catalog.py's spec_construct_names() parses
+      # ossie/core-spec/expression_language.md directly as its upstream-spec
+      # coverage oracle, so a spec bump can fail this converter's tests without
+      # touching a single converter file.
+      - 'ossie'
       - '.github/workflows/converter-thoughtspot-ci.yml'
   pull_request:
     branches: [ "main" ]
     paths:
-      - 'converters/thoughtspot/**'
-      - 'core-spec/**'
-      - 'examples/**'
+      - 'thoughtspot/**'
+      - 'ossie'
       - '.github/workflows/converter-thoughtspot-ci.yml'
 
 permissions:
@@ -53,6 +52,8 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: true
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -65,11 +66,11 @@ jobs:
           version: "0.12.19"
 
       - name: Sync dependencies
-        working-directory: converters/thoughtspot
+        working-directory: thoughtspot
         run: |
           uv sync
 
       - name: Unit Tests
-        working-directory: converters/thoughtspot
+        working-directory: thoughtspot
         run: |
           uv run pytest

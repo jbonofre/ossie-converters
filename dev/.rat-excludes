@@ -37,11 +37,14 @@
 # Microsoft BI fixture formats (TOM/BIM/TMDL treat leading lines as object descriptions)
 **/*.bim
 **/*.ipynb
-converters/microsoft/tests/fixtures/sales_model.tmdl
+microsoft/tests/fixtures/sales_model.tmdl
 
 # Snapshot/fixture test files
 **/snapshots/**
 **/__snapshots__/**
+
+# apache/ossie git submodule (checked by its own repository)
+ossie/**
 
 # Git and IDE
 .git/**

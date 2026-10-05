@@ -19,7 +19,7 @@
 
 # Apache Ossie ↔ Honeydew Converter
 
-Bidirectional converter between [Apache Ossie](../../core-spec/spec.md) semantic models
+Bidirectional converter between [Apache Ossie](https://github.com/apache/ossie/blob/main/core-spec/spec.md) semantic models
 and [Honeydew](https://honeydew.ai/docs) [workspace YAML](https://honeydew.ai/docs/yaml-schema).
 
 Honeydew documents this integration from its own side under

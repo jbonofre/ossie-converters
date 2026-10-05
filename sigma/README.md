@@ -175,7 +175,7 @@ handle faithfully and why.
 ## Development
 
 ```bash
-cd converters/sigma
+cd sigma
 uv sync
 uv run pytest
 ```

@@ -15,98 +15,77 @@
 # specific language governing permissions and limitations
 # under the License.
 
-# Catch-all: any converter change gets this label (including new converters)
-converter:
+# One label per converter
+converter/cube:
   - changed-files:
-      - any-glob-to-any-file: 'converters/**'
-
-# Specific converter labels
-converter/dbt:
-  - changed-files:
-      - any-glob-to-any-file: 'converters/dbt/**'
+      - any-glob-to-any-file: 'cube/**'
 
 converter/databricks:
   - changed-files:
-      - any-glob-to-any-file: 'converters/databricks/**'
+      - any-glob-to-any-file: 'databricks/**'
+
+converter/dbt:
+  - changed-files:
+      - any-glob-to-any-file: 'dbt/**'
 
 converter/gooddata:
   - changed-files:
-      - any-glob-to-any-file: 'converters/gooddata/**'
+      - any-glob-to-any-file: 'gooddata/**'
 
 converter/honeydew:
   - changed-files:
-      - any-glob-to-any-file: 'converters/honeydew/**'
-
-converter/omni:
-  - changed-files:
-      - any-glob-to-any-file: 'converters/omni/**'
-
-converter/orionbelt:
-  - changed-files:
-      - any-glob-to-any-file: 'converters/orionbelt/**'
-
-converter/polaris:
-  - changed-files:
-      - any-glob-to-any-file: 'converters/polaris/**'
-
-converter/salesforce:
-  - changed-files:
-      - any-glob-to-any-file: 'converters/salesforce/**'
-
-converter/snowflake:
-  - changed-files:
-      - any-glob-to-any-file: 'converters/snowflake/**'
-
-converter/wisdom:
-  - changed-files:
-      - any-glob-to-any-file: 'converters/wisdom/**'
-
-converter/sigma:
-  - changed-files:
-      - any-glob-to-any-file: 'converters/sigma/**'
+      - any-glob-to-any-file: 'honeydew/**'
 
 converter/microsoft:
   - changed-files:
-      - any-glob-to-any-file: 'converters/microsoft/**'
+      - any-glob-to-any-file: 'microsoft/**'
 
 converter/nvidia:
   - changed-files:
-      - any-glob-to-any-file: 'converters/nvidia/**'
+      - any-glob-to-any-file: 'nvidia/**'
+
+converter/omni:
+  - changed-files:
+      - any-glob-to-any-file: 'omni/**'
 
 converter/ontology:
   - changed-files:
-      - any-glob-to-any-file: 'converters/ontology/**'
-
-# Other areas
-cli:
-  - changed-files:
-      - any-glob-to-any-file: 'cli/**'
-
-spec:
-  - changed-files:
-      - any-glob-to-any-file: 'core-spec/**'
-
-ontology:
-  - changed-files:
       - any-glob-to-any-file: 'ontology/**'
 
-docs:
+converter/orionbelt:
   - changed-files:
-      - any-glob-to-any-file: 'docs/**'
+      - any-glob-to-any-file: 'orionbelt/**'
 
-validation:
+converter/polaris:
   - changed-files:
-      - any-glob-to-any-file: 'validation/**'
+      - any-glob-to-any-file: 'polaris/**'
 
-examples:
+converter/salesforce:
   - changed-files:
-      - any-glob-to-any-file: 'examples/**'
+      - any-glob-to-any-file: 'salesforce/**'
 
+converter/sigma:
+  - changed-files:
+      - any-glob-to-any-file: 'sigma/**'
+
+converter/snowflake:
+  - changed-files:
+      - any-glob-to-any-file: 'snowflake/**'
+
+converter/thoughtspot:
+  - changed-files:
+      - any-glob-to-any-file: 'thoughtspot/**'
+
+converter/wisdom:
+  - changed-files:
+      - any-glob-to-any-file: 'wisdom/**'
+
+# Other areas
 infra:
   - changed-files:
       - any-glob-to-any-file:
           - '.github/**'
           - '.asf.yaml'
-          - 'Makefile'
-          - '.pre-commit-config.yaml'
-          - 'ruff.toml'
+          - '.gitmodules'
+          - 'ossie'
+          - 'dev/**'

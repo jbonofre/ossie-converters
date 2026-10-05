@@ -48,7 +48,7 @@ def test_non_python_packaging_files_carry_the_asf_header():
     # ungated. Each uses a different comment syntax ('#', HTML comment,
     # YAML '#'), so this checks for the licence text itself, not an exact
     # comment-prefixed line.
-    repo_root = ROOT.parent.parent
+    repo_root = ROOT.parent
     files = {
         "pyproject.toml": ROOT / "pyproject.toml",
         ".gitignore": ROOT / ".gitignore",

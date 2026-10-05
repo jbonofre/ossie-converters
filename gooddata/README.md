@@ -26,7 +26,7 @@ semantic model specification.
 Ossie input and output use one model per document, with `name`, `datasets`,
 `relationships`, and `metrics` directly at the root beside `version`. Migrate
 legacy `semantic_model` wrappers before conversion; see the
-[format migration guidance](../../core-spec/spec.md#migrating-earlier-document-shapes).
+[format migration guidance](https://github.com/apache/ossie/blob/main/core-spec/spec.md#migrating-earlier-document-shapes).
 
 ## Features
 

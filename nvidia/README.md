@@ -30,7 +30,7 @@ converter still reads it, and writes `NVIDIA_AUTO_ONTOLOGY` from now on.
 Ossie input and output use one model per document, with `name`, `datasets`,
 `relationships`, and `metrics` directly at the root beside `version`. Migrate
 legacy `semantic_model` wrappers before conversion; see the
-[format migration guidance](../../core-spec/spec.md#migrating-earlier-document-shapes).
+[format migration guidance](https://github.com/apache/ossie/blob/main/core-spec/spec.md#migrating-earlier-document-shapes).
 
 ## Mapping
 
@@ -55,7 +55,7 @@ converter targets.
 ## Setup
 
 ```bash
-cd converters/nvidia
+cd nvidia
 uv sync
 ```
 
@@ -63,7 +63,7 @@ uv sync
 
 ```bash
 uv run ossie-nvidia-auto-ontology export \
-  --input ../../examples/tpcds_semantic_model.yaml \
+  --input ../ossie/examples/tpcds_semantic_model.yaml \
   --output tpcds.auto_ontology.yaml \
   --database-name tpcds
 ```

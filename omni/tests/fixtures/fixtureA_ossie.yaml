@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-# yaml-language-server: $schema=../../../../core-spec/ossie-schema.json
+# yaml-language-server: $schema=../../../ossie/core-spec/ossie-schema.json
 #
 # Fixture A -- all-native round-trip (Ossie -> Omni -> Ossie).
 # Star schema; every construct maps to a native Omni slot. Documented

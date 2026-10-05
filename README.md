@@ -19,12 +19,33 @@
 
 # Apache Ossie Converters
 
+Reference converters that translate between [Apache Ossie](https://github.com/apache/ossie)
+semantic models and other semantic formats.
+
+## Repository layout
+
+Each converter lives in its own top-level directory (`dbt/`, `snowflake/`, `salesforce/`, ...)
+and is built and tested on its own; see the `README.md` in each directory.
+
+The Ossie specification, examples, validation script and shared Python package live in
+[apache/ossie](https://github.com/apache/ossie), which is pinned here as the `ossie` git
+submodule. Converter builds and tests read from it, so clone with submodules:
+
+```bash
+git clone --recurse-submodules https://github.com/apache/ossie-converters.git
+# or, in an existing clone
+git submodule update --init
+```
+
+Contributions follow the Apache Ossie
+[contribution guide](https://github.com/apache/ossie/blob/main/CONTRIBUTING.md).
+
 ## Document format
 
 Converters use the flat `0.2.0.dev0` core format: one model per JSON/YAML document,
 with `name`, `datasets`, `relationships`, and `metrics` at the root alongside
 `version`. Legacy `semantic_model` arrays or object wrappers must be migrated
-before conversion; see the [migration guidance](../core-spec/spec.md#migrating-earlier-document-shapes).
+before conversion; see the [migration guidance](https://github.com/apache/ossie/blob/main/core-spec/spec.md#migrating-earlier-document-shapes).
 For catalog exports, write separate documents rather than wrapping multiple
 models in one file. Ontology documents retain their embedded `semantic_model`
 property as defined by the ontology schema.
@@ -242,7 +263,7 @@ A converter should map `ai_context` when the target vendor supports equivalent c
 
 ### Step-by-Step Guide
 
-1. **Validate input**: Use the [Ossie JSON Schema](../core-spec/ossie-schema.json) and the [validation script](../validation/validate.py) to ensure the source Ossie model is valid before conversion.
+1. **Validate input**: Use the [Ossie JSON Schema](https://github.com/apache/ossie/blob/main/core-spec/ossie-schema.json) and the [validation script](https://github.com/apache/ossie/blob/main/validation/validate.py) to ensure the source Ossie model is valid before conversion.
 
 2. **Parse the Ossie model**: Load the JSON or YAML document as one model.
 
@@ -290,7 +311,7 @@ To achieve this:
 
 ## Example: Conceptual Conversion Flow
 
-Given the [TPC-DS example](../examples/tpcds_semantic_model.yaml) included in this repository, a Snowflake export converter would:
+Given the [TPC-DS example](https://github.com/apache/ossie/blob/main/examples/tpcds_semantic_model.yaml) from the Apache Ossie repository, a Snowflake export converter would:
 
 1. Read the `tpcds_retail_model` semantic model.
 2. Create a Snowflake semantic model with name `tpcds_retail_model`.
@@ -308,5 +329,5 @@ To add support for a new vendor:
 2. Define the custom extension schema for the vendor (what vendor-specific metadata fields are supported in the `data` JSON).
 3. Implement the export converter (Ossie → Vendor).
 4. Implement the import converter (Vendor → Ossie).
-5. Add tests using the [TPC-DS example model](../examples/tpcds_semantic_model.yaml) as a baseline.
+5. Add tests using the [TPC-DS example model](https://github.com/apache/ossie/blob/main/examples/tpcds_semantic_model.yaml) as a baseline.
 6. Document any limitations or unsupported constructs.

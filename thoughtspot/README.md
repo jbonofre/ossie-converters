@@ -177,7 +177,7 @@ rather than leaving it to be inferred from reading `tml_to_ossie.py`:
    subtly-wrong logic a shared SQL parser would exist to prevent — and no such shared
    parser exists in this project today. Building one is out of scope for a single
    converter to take on unilaterally.
-3. **The reference converter (`converters/databricks`) tags its own vendor dialect and
+3. **The reference converter (`databricks`) tags its own vendor dialect and
    reads that first**, falling back to `ANSI_SQL` only when the source document already
    provides it — it does not translate a foreign dialect into its own either. This
    converter follows the same shape: prefer `THOUGHTSPOT`, add `ANSI_SQL` only when it

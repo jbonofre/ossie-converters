@@ -19,7 +19,7 @@
 
 # Apache Ossie Polaris Converter
 
-A two-way converter between [Ossie semantic models](../../core-spec/spec.md) and [Apache Polaris](https://polaris.apache.org/) catalogs.
+A two-way converter between [Ossie semantic models](https://github.com/apache/ossie/blob/main/core-spec/spec.md) and [Apache Polaris](https://polaris.apache.org/) catalogs.
 
 Apache Polaris is an open-source catalog for Apache Iceberg. This converter communicates with Polaris via the Iceberg REST Catalog API to import catalog metadata into Ossie format and export Ossie models back into Polaris.
 
@@ -187,4 +187,4 @@ inference is used with a warning.
 
 ## License
 
-Apache License 2.0 — see [LICENSE](../../LICENSE).
+Apache License 2.0 — see [LICENSE](../LICENSE).

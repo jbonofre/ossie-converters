@@ -38,7 +38,7 @@ from ossie_sigma.sigma_to_ossie import SigmaToOssieConverter
 
 from .helpers import load_fixture, normalize
 
-EXAMPLES_DIR = Path(__file__).parent.parent.parent.parent / "examples"
+EXAMPLES_DIR = Path(__file__).parent.parent.parent / "ossie" / "examples"
 
 
 def test_roundtrip_fixture_a_is_byte_identical():

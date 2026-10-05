@@ -19,7 +19,7 @@
 
 # Apache Ossie Salesforce Converter
 
-A two-way converter between [Ossie semantic models](../../core-spec/spec.md) and [Salesforce Semantic Model](https://developer.salesforce.com/docs/data/semantic-layer/guide/salesforce-semantic-model-schema.html).
+A two-way converter between [Ossie semantic models](https://github.com/apache/ossie/blob/main/core-spec/spec.md) and [Salesforce Semantic Model](https://developer.salesforce.com/docs/data/semantic-layer/guide/salesforce-semantic-model-schema.html).
 
 This converter supports conversion in both directions between Ossie YAML and
 Salesforce Semantic Model JSON. Unmapped Salesforce properties are preserved in
@@ -67,7 +67,7 @@ Apache license headers. Do not commit downloaded schemas.
 
 ### Apache Ossie Schema
 
-The build copies [the canonical Ossie schema](../../core-spec/ossie-schema.json)
+The build copies [the canonical Ossie schema](https://github.com/apache/ossie/blob/main/core-spec/ossie-schema.json)
 into the jar. No separate download or duplicate schema file is needed.
 
 ## Usage
@@ -302,7 +302,7 @@ The resulting expression is:
 names, then against fields actually emitted to Salesforce. Physical column names
 and source paths are not aliases. Unqualified SQL fields must be unique. Regular
 SQL names normalize to uppercase; double-quoted names match the normalized
-declaration exactly, following the [expression specification](../../core-spec/expression_language.md).
+declaration exactly, following the [expression specification](https://github.com/apache/ossie/blob/main/core-spec/expression_language.md).
 Thus `"ORDERS"."AMOUNT"` matches regular declarations `orders.amount`, while
 `"orders"."amount"` requires explicitly quoted lowercase declarations. Target
 API names are preserved; conversion does not rename fields or discover columns.
@@ -432,4 +432,4 @@ See the test suite for sample models demonstrating various features:
 
 ## License
 
-Apache License 2.0 — see [LICENSE](../../LICENSE).
+Apache License 2.0 — see [LICENSE](../LICENSE).

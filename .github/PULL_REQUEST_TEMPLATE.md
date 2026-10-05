@@ -27,34 +27,16 @@
 
 ## Checklist
 
-### Specification
-- [ ] Spec changes are included in `core-spec/` and follow the existing structure
-- [ ] Spec changes have been discussed on the mailing list or in a linked issue
-- [ ] Breaking changes to the spec are clearly called out in the summary
-
-### Ontology
-- [ ] Ontology changes in `ontology/` are consistent with spec changes
-- [ ] New or modified terms are defined and documented
-
 ### Converters
-- [ ] Converter logic in `converters/` is updated to reflect spec or ontology changes
+- [ ] Converter logic is updated to reflect spec or ontology changes in [apache/ossie](https://github.com/apache/ossie)
 - [ ] New converters include tests under the converter's test directory
-- [ ] If adding a new converter, `.github/labeler.yml` is updated with the new path
-
-### Validation
-- [ ] Validation rules in `validation/` are updated if the spec changed
-- [ ] New validation cases are covered by tests
+- [ ] If adding a new converter, `.github/labeler.yml`, `.github/dependabot.yml` and a `converter-<name>-ci.yml` workflow are added for the new path
 
 ### Documentation
-- [ ] `docs/` is updated to reflect any user-facing changes
-- [ ] New features or behaviors are documented with examples where appropriate
-- [ ] `CONTRIBUTING.md` is updated if the contribution process changed
-
-### Examples
-- [ ] `examples/` are added or updated for any new spec constructs or converter support
+- [ ] The converter's `README.md` is updated to reflect any user-facing changes
 
 ### Tests
-- [ ] All existing tests pass (`pytest` / CI green)
+- [ ] All existing tests pass (`pytest` / `mvn verify` / CI green)
 - [ ] New functionality is covered by tests
 
 ### Compliance
