@@ -28,7 +28,7 @@
 ## Checklist
 
 ### Converters
-- [ ] Converter logic is updated to reflect spec or ontology changes in [apache/ossie](https://github.com/apache/ossie)
+- [ ] Converter logic is updated to reflect spec or ontology changes in [apache/ossie-converters](https://github.com/apache/ossie-converters)
 - [ ] New converters include tests under the converter's test directory
 - [ ] If adding a new converter, `.github/labeler.yml`, `.github/dependabot.yml` and a `converter-<name>-ci.yml` workflow are added for the new path
 
