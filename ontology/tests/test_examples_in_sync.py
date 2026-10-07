@@ -30,7 +30,7 @@ from pathlib import Path
 import pytest
 
 _FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
-# tests/ -> ontology -> converters -> <repo root>
+# tests/ -> ontology -> <repo root>
 _EXAMPLES_DIR = Path(__file__).resolve().parents[2] / "ossie" / "examples"
 
 # (vendored filename, canonical filename in examples/)
