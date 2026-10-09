@@ -22,20 +22,19 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'converters/holistics/**'
-      # core-spec/** is the convention every sibling workflow adopted in #396.
-      # examples/** is load-bearing here rather than merely conventional: the
-      # reverse-path snapshot converts examples/tpcds_semantic_model.yaml, so an
-      # edit there fails this converter's tests without touching a converter file.
-      - 'core-spec/**'
-      - 'examples/**'
+      - 'holistics/**'
+      # `ossie` is the apache/ossie submodule (core spec, examples); every sibling
+      # workflow re-runs when its pin moves. It is load-bearing here rather than
+      # merely conventional: the reverse-path snapshot converts
+      # ossie/examples/tpcds_semantic_model.yaml, so an example change can fail
+      # this converter's tests without touching a single converter file.
+      - 'ossie'
       - '.github/workflows/converter-holistics-ci.yml'
   pull_request:
     branches: [ "main" ]
     paths:
-      - 'converters/holistics/**'
-      - 'core-spec/**'
-      - 'examples/**'
+      - 'holistics/**'
+      - 'ossie'
       - '.github/workflows/converter-holistics-ci.yml'
 
 permissions:
@@ -52,6 +51,8 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: true
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -84,11 +85,11 @@ jobs:
           echo "$RUNNER_TEMP/holistics/node_modules/.bin" >> "$GITHUB_PATH"
 
       - name: Sync dependencies
-        working-directory: converters/holistics
+        working-directory: holistics
         run: |
           uv sync
 
       - name: Unit Tests
-        working-directory: converters/holistics
+        working-directory: holistics
         run: |
           uv run pytest

@@ -103,7 +103,7 @@ def _upstream_validator():
     """
     import importlib.util
 
-    path = Path(__file__).resolve().parents[3] / "validation" / "validate.py"
+    path = Path(__file__).resolve().parents[2] / "ossie" / "validation" / "validate.py"
     if not path.exists():  # pragma: no cover - only outside a full checkout
         pytest.skip(f"upstream validator not found at {path}")
     spec = importlib.util.spec_from_file_location("_ossie_validate", path)

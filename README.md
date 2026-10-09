@@ -113,7 +113,7 @@ The Ossie specification currently defines extensions for the following vendors:
 | `HEX` | Hex semantic project |
 | `HOLISTICS` | Holistics AML dataset |
 
-[`wisdom-semantic-view`](wisdom-semantic-view/README.md) is a separate, fixture-scoped spoke. It reads one Snowflake semantic view, writes one Ossie document, writes a Wisdom domain-export JSON (format `1.0`), and reverses that path. It keeps metric synonyms and `module_custom_instructions.sql_generation`. It does not call `converters/snowflake` (Cortex Analyst export only) or `converters/wisdom` (that spoke drops synonyms and field or metric `ai_context`).
+[`wisdom-semantic-view`](wisdom-semantic-view/README.md) is a separate, fixture-scoped spoke. It reads one Snowflake semantic view, writes one Ossie document, writes a Wisdom domain-export JSON (format `1.0`), and reverses that path. It keeps metric synonyms and `module_custom_instructions.sql_generation`. It does not call `snowflake` (Cortex Analyst export only) or `wisdom` (that spoke drops synonyms and field or metric `ai_context`).
 
 Each vendor may define custom extensions (via the `custom_extensions` field in the Ossie spec) to carry vendor-specific metadata that does not have an equivalent in the core specification.
 
@@ -327,7 +327,7 @@ Given the [TPC-DS example](https://github.com/apache/ossie/blob/main/examples/tp
 
 ## Contributing a New Converter
 
-The main Ossie repository does not accept new converters. Develop new semantic model and ontology converters in a separate repository. For Apache Ossie hosting, use the [ossie-converters repository](https://github.com/apache/ossie-converters) and coordinate contributions on `dev@ossie.apache.org`. See [Converter Contributions](../CONTRIBUTING.md#converter-contributions) for details.
+The main Ossie repository does not accept new converters. Develop new semantic model and ontology converters in a separate repository. For Apache Ossie hosting, use the [ossie-converters repository](https://github.com/apache/ossie-converters) and coordinate contributions on `dev@ossie.apache.org`. See [Converter Contributions](https://github.com/apache/ossie/blob/main/CONTRIBUTING.md#converter-contributions) for details.
 
 To add support for a new vendor, in your own repository or in `ossie-converters`:
 

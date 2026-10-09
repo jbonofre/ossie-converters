@@ -385,7 +385,7 @@ class _Reverse:
         Ossie keeps the semantic model's name and its dataset names in separate
         namespaces, so a document may use one name for both. Three fixtures in
         this repository do, including
-        `converters/cube/tests/fixtures/databricks_ossie.yaml`, whose root name
+        `cube/tests/fixtures/databricks_ossie.yaml`, whose root name
         and first dataset are both `orders`. AML has one namespace for `Dataset`
         and `Model`, and rejects the pair with "Duplicated name 'orders'".
 
@@ -799,7 +799,7 @@ class _Reverse:
 
         An Ossie SQL body may name a warehouse column the document does not declare as
         a field. `SUM(orders.subtotal) / COUNT(DISTINCT customers.customer_id)`
-        in `converters/nvidia/tests/fixtures/sales.ossie.yaml` is one: `orders`
+        in `nvidia/tests/fixtures/sales.ossie.yaml` is one: `orders`
         declares no `subtotal`. Ossie SQL resolves that against the table, and AQL
         does not, answering `Field `subtotal` not found in model `orders``. So
         the column becomes a hidden dimension on that model, and the AQL

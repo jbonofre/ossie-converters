@@ -29,12 +29,12 @@ from pathlib import Path
 from ossie_holistics import _yaml, aml_to_ossie, ossie_to_aml
 from ossie_holistics.issues import IssueLog
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
+REPO_ROOT = Path(__file__).resolve().parents[2]
 CONVERTER_ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = CONVERTER_ROOT / "tests" / "fixtures"
 
 ECOMMERCE_COMPILED = FIXTURES / "ecommerce" / "ecommerce.dataset.aml.json"
-TPCDS_OSSIE = REPO_ROOT / "examples" / "tpcds_semantic_model.yaml"
+TPCDS_OSSIE = REPO_ROOT / "ossie" / "examples" / "tpcds_semantic_model.yaml"
 AQL_TRANSLATION = FIXTURES / "aql" / "translation.ossie.yaml"
 METRIC_REFERENCES = FIXTURES / "metric_refs" / "references.ossie.yaml"
 

@@ -32,6 +32,14 @@ converter/gooddata:
   - changed-files:
       - any-glob-to-any-file: 'gooddata/**'
 
+converter/hex:
+  - changed-files:
+      - any-glob-to-any-file: 'hex/**'
+
+converter/holistics:
+  - changed-files:
+      - any-glob-to-any-file: 'holistics/**'
+
 converter/honeydew:
   - changed-files:
       - any-glob-to-any-file: 'honeydew/**'
@@ -79,6 +87,10 @@ converter/thoughtspot:
 converter/wisdom:
   - changed-files:
       - any-glob-to-any-file: 'wisdom/**'
+
+converter/wisdom-semantic-view:
+  - changed-files:
+      - any-glob-to-any-file: 'wisdom-semantic-view/**'
 
 # Other areas
 infra:

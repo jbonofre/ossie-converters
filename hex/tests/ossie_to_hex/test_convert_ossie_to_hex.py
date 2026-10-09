@@ -27,7 +27,12 @@ from ossie_hex.util.yaml import dump_yaml
 from tests.ossie_to_hex.utils import Quick
 from tests.utils import hex_project_snapshot, problems_snapshot
 
-TPCDS = Path(__file__).resolve().parents[4] / "examples" / "tpcds_semantic_model.yaml"
+TPCDS = (
+    Path(__file__).resolve().parents[3]
+    / "ossie"
+    / "examples"
+    / "tpcds_semantic_model.yaml"
+)
 
 
 def test_output_file_reports_dump_error(

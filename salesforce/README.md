@@ -354,7 +354,7 @@ retain that spelling as a compatibility case and receive the same validation.
 Bracket notation is not accepted as Snowflake or `OSSIE_SQL_2026` SQL.
 
 `OSSIE_SQL_2026` is the spec's own
-[portable expression language](../../core-spec/expression_language.md), based on
+[portable expression language](https://github.com/apache/ossie/blob/main/core-spec/expression_language.md), based on
 ANSI SQL:2003 Core, so it is parsed and validated exactly like `ANSI_SQL` and
 quotes identifiers with double quotes. It is selected last because a dialect
 authored for a specific engine states that engine's intent more precisely. The

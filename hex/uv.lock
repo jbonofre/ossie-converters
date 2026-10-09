@@ -14,7 +14,7 @@ wheels = [
 [[package]]
 name = "apache-ossie"
 version = "0.2.0.dev0"
-source = { editable = "../../python" }
+source = { editable = "../ossie/python" }
 dependencies = [
     { name = "pydantic" },
     { name = "pyyaml" },
@@ -153,7 +153,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "apache-ossie", editable = "../../python" },
+    { name = "apache-ossie", editable = "../ossie/python" },
     { name = "hex-sl-utils", specifier = ">=0.2.0" },
     { name = "pydantic", specifier = ">=2.13.4" },
     { name = "pydantic-core", specifier = ">=2.46.4" },

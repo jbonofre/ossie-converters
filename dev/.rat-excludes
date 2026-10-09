@@ -66,5 +66,5 @@ ossie/**
 **/NOTICE
 
 # Specific project files
-.editorconfig
-.python-version
+**/.editorconfig
+**/.python-version

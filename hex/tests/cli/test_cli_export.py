@@ -25,7 +25,12 @@ from ossie_hex.cli import main
 from ossie_hex.cli.report import format_export_report
 from ossie_hex.util.problem import Problem
 
-TPCDS = Path(__file__).resolve().parents[4] / "examples" / "tpcds_semantic_model.yaml"
+TPCDS = (
+    Path(__file__).resolve().parents[3]
+    / "ossie"
+    / "examples"
+    / "tpcds_semantic_model.yaml"
+)
 
 
 def test_error_report_is_failed() -> None:

@@ -91,7 +91,7 @@ def test_no_committed_snapshot_is_orphaned():
 def test_the_converted_document_passes_the_ossie_schema():
     jsonschema = pytest.importorskip("jsonschema")
     schema = json.loads(
-        (snapshots.REPO_ROOT / "core-spec" / "ossie-schema.json").read_text(encoding="utf-8")
+        (snapshots.REPO_ROOT / "ossie" / "core-spec" / "ossie-schema.json").read_text(encoding="utf-8")
     )
     _, result = snapshots.forward()
     jsonschema.validate(result.model, schema)

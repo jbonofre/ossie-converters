@@ -34,7 +34,7 @@ Ensure you have the following tools available in your environment:
 Checkout the Apache Ossie repository and install the project dependencies:
 
 ```bash
-cd converters/hex
+cd hex
 uv sync
 ```
 
@@ -201,8 +201,8 @@ Publishing is deferred to the Apache Ossie project, which governs the broader
 release cycle. Contributors should not publish this package independently.
 
 <!-- internal links -->
-[ossie-contributing]: ../../CONTRIBUTING.md
-[ci-workflow]: ../../.github/workflows/converter-hex-ci.yml
+[ossie-contributing]: https://github.com/apache/ossie/blob/main/CONTRIBUTING.md
+[ci-workflow]: ../.github/workflows/converter-hex-ci.yml
 
 <!-- external links -->
 [uv-install]: https://docs.astral.sh/uv/installation/

@@ -36,7 +36,7 @@ from ossie_wisdom_semantic_view.wisdom import dump_wisdom, load_wisdom, ossie_to
 
 ROOT = Path(__file__).resolve().parents[1]
 FINANCE = ROOT / "tests" / "fixtures" / "finance"
-REPO = ROOT.parent.parent
+REPO = ROOT.parent
 _HEADER_END = "# under the License.\n"
 
 
@@ -102,7 +102,7 @@ def test_enrichment_survives_the_wisdom_side():
 
 
 def test_ossie_goldens_match_schema():
-    schema = json.loads((REPO / "core-spec" / "ossie-schema.json").read_text())
+    schema = json.loads((REPO / "ossie" / "core-spec" / "ossie-schema.json").read_text())
     validator = jsonschema.Draft202012Validator(schema)
     for name in ("cfo_cockpit.yaml", "cfo_cockpit.enriched.yaml"):
         document = load_ossie((FINANCE / "ossie" / name).read_text())

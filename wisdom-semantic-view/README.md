@@ -21,7 +21,7 @@
 
 You do not need the WisdomAI UI, a WisdomAI login, a Snowflake account, or a Snowflake warehouse. These commands do not sign in to WisdomAI or Snowflake. The inputs are the files in `tests/fixtures/finance/`.
 
-Run this from `converters/wisdom-semantic-view`. You need Python 3.11 or newer and [uv](https://docs.astral.sh/uv/).
+Run this from `wisdom-semantic-view`. You need Python 3.11 or newer and [uv](https://docs.astral.sh/uv/).
 
 ```bash
 uv sync
@@ -48,8 +48,8 @@ Offline conversion of one Snowflake semantic view through an Apache Ossie docume
 into a WisdomAI domain export (format `1.0`), and back. No Snowflake account and no
 Wisdom tenant.
 
-This is not [`converters/snowflake`](../snowflake). That package only writes Cortex
-Analyst YAML and cannot read a semantic view. This is not [`converters/wisdom`](../wisdom).
+This is not [`snowflake`](../snowflake). That package only writes Cortex
+Analyst YAML and cannot read a semantic view. This is not [`wisdom`](../wisdom).
 That package converts domain-export JSON both ways and drops synonyms and field or
 metric `ai_context`. Calling either one drops the revenue metric's synonyms and the
 `sql_generation` instruction this fixture carries.

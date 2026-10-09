@@ -44,7 +44,7 @@ def test_every_source_file_carries_the_asf_header():
 
 
 def test_non_python_packaging_files_carry_the_asf_header():
-    repo_root = ROOT.parent.parent
+    repo_root = ROOT.parent
     files = {
         "pyproject.toml": ROOT / "pyproject.toml",
         ".gitignore": ROOT / ".gitignore",
