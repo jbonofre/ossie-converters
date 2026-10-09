@@ -26,7 +26,7 @@ import yaml
 
 from ossie_ontology.spec import DatasetField, Metric, SemanticModel
 
-+# tests/ -> ontology -> <repo root>
+# tests/ -> ontology -> <repo root>
 _EXAMPLES_DIR = Path(__file__).resolve().parents[2] / "ossie" / "examples"
 
 
