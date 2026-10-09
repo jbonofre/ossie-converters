@@ -196,6 +196,29 @@ ossieToSf.convert(Paths.get("input/model.yaml"), Paths.get("output/"));
 | `ai_context` | `businessPreferences` |
 | `custom_extensions` (vendor: `SALESFORCE`) | Restored properties |
 
+### Required Salesforce Properties
+
+The semantic model API rejects a payload that omits the model's `dataspace` or a
+data object's `dataObjectType`. Neither has an Ossie equivalent, so export
+supplies them:
+
+| Salesforce | Exported value |
+|------------|----------------|
+| `dataspace` | `default`, the dataspace every Data Cloud org provisions |
+| `semanticDataObjects[].dataObjectType` | `Dmo` when `dataObjectName` ends in `__dlm`, otherwise `Dlo` |
+
+Data Cloud suffixes a data object's name with the kind of object it is, so the
+dataset's `source` already carries the reference type: `Orders__dll` is a data
+lake object and `Orders__dlm` a data model object. A name with neither suffix
+came from outside Data Cloud, such as a Snowflake table or a dbt model, and lands
+in a data lake object once ingested. A `SALESFORCE` custom extension restored
+from an imported model takes precedence over both defaults.
+
+Note that the published schema's `dataObjectType` enum is narrower than the API
+it documents: it lists `Dlo` and `Query`, while API v67.0 accepts `Dlo` and `Dmo`
+and rejects `Query`. Import therefore rejects a model backed by a data model
+object until the published schema catches up.
+
 ### Data Types
 
 Salesforce imports map field and calculated-measurement types to Ossie's portable
@@ -255,10 +278,11 @@ dimensions.
 
 ### Metric expressions
 
-Metrics select `TABLEAU`, then `SNOWFLAKE`, then `ANSI_SQL`, independent of entry
-order. The selected expression is parsed and validated; an invalid preferred
-expression fails rather than falling back to another dialect. Duplicate selected
-dialect entries are errors. Successful conversion exports every declared metric.
+Metrics select `TABLEAU`, then `SNOWFLAKE`, then `ANSI_SQL`, then
+`OSSIE_SQL_2026`, independent of entry order. The selected expression is parsed
+and validated; an invalid preferred expression fails rather than falling back to
+another dialect. Duplicate selected dialect entries are errors. Successful
+conversion exports every declared metric.
 
 The target is the Salesforce/Tableau Next semantic model's
 [Tua calculation language](https://developer.salesforce.com/docs/data/semantic-layer/guide/query-api-in-depth-functions.html).
@@ -274,10 +298,20 @@ and [aggregation rules](https://developer.salesforce.com/docs/data/semantic-laye
 | `+`, `-`, `*`, `/`, parentheses, numeric constants | Explicitly grouped arithmetic |
 | Searched `CASE WHEN` | `IF … THEN … ELSEIF … ELSE … END` |
 | Comparisons, `AND`, `OR`, `NOT` | Equivalent grouped operators |
+| Field `IN (...)`, `NOT IN (...)` with scalar literals | Grouped equality comparisons joined by `OR`, optionally wrapped in `NOT` |
 | `COALESCE(a, b, …)` | Nested `IFNULL` |
 | `NULLIF(a, b)` | `IF a = b THEN NULL ELSE a END` |
 | `IS NULL`, `IS NOT NULL` | `ISNULL`, `NOT ISNULL` |
 | `ABS`, `ROUND`, `CEIL`, `FLOOR` | `ABS`, `ROUND`, `CEILING`, `FLOOR` |
+
+Membership lists must be nonempty and contain only scalar literals (including NULL
+and signed numbers), with a direct field on the left. Types must be compatible;
+subqueries, tuples and computed operands are unsupported. NULL membership follows
+SQL three-valued logic, including for `NOT IN`.
+When combining membership with `AND` or `OR`, parenthesize each membership
+predicate, for example `(orders.status IN ('paid', 'pending')) AND orders.active`.
+The current SQL parser can misgroup unparenthesized membership before a Boolean
+operator; those forms are rejected rather than translated.
 
 These constructs compose. For example, with declared numeric fields `profit` and
 `revenue` in dataset `orders`:
@@ -317,7 +351,15 @@ belong to separate converter work.
 subset is the Tua equivalents above, including `IF`, `IFNULL`, `ISNULL`, `COUNTD`
 and `CEILING`. Existing `ANSI_SQL` expressions using complete bracket notation
 retain that spelling as a compatibility case and receive the same validation.
-Bracket notation is not accepted as Snowflake SQL.
+Bracket notation is not accepted as Snowflake or `OSSIE_SQL_2026` SQL.
+
+`OSSIE_SQL_2026` is the spec's own
+[portable expression language](../../core-spec/expression_language.md), based on
+ANSI SQL:2003 Core, so it is parsed and validated exactly like `ANSI_SQL` and
+quotes identifiers with double quotes. It is selected last because a dialect
+authored for a specific engine states that engine's intent more precisely. The
+supported function subset is unchanged: spec aliases such as `IFNULL`, `NVL` and
+`CEILING` remain outside it, as they already are for `ANSI_SQL`.
 
 Fields need a known compatible datatype, either declared in OSI or restored from
 an existing Salesforce field type. Arithmetic and `SUM`/`AVG` require numbers;
